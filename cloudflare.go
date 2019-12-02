@@ -261,7 +261,7 @@ func (api *API) makeRequestWithAuthTypeAndHeaders(ctx context.Context, method, u
 	case resp.StatusCode == http.StatusUnauthorized:
 		return nil, errors.Errorf("HTTP status %d: invalid credentials", resp.StatusCode)
 	case resp.StatusCode == http.StatusForbidden:
-		return nil, errors.Errorf("HTTP status %d: insufficient permissions", resp.StatusCode)
+		return nil, errors.Errorf("HTTP status %d: insufficient permissions for URL %s", resp.StatusCode, uri)
 	case resp.StatusCode == http.StatusServiceUnavailable,
 		resp.StatusCode == http.StatusBadGateway,
 		resp.StatusCode == http.StatusGatewayTimeout,
